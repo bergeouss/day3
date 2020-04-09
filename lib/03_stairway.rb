@@ -22,13 +22,46 @@ o = "#"
   end
 end
 def dice
-
-def player
-  p="I"
+  return rand(6)+1
+end
+def results(dice)
+  if res==1
+    puts "Tu descends une marche"
+    return -1
+  elseif res>=5
+    puts "Tu montes une marche"
+    return +1
+  else
+    puts "Tu ne bouges pas"
+    return 0
+  end
+end  
+def status(num)
+  puts "Vous êtes sur la marche n°#{num}"
+end  
+def finish?(num)
+  if num == 10
+    return true
+  else
+    return false
+  end
+end
+def play
+  puts "Bienvenue dans le jeu!"
+  step = 1
+  status(step)
+   while( !finish?(step) ) do
+    puts "Tapez 'Entrée' pour lancer un dé !"
+    gets.chomp
+    step += results(dice)
+   status(step)
+  end
+  puts "=== Vous avez gagné ! ==="
 end
 def perform
   start
   stairway
+  play
 end
 perform
 
